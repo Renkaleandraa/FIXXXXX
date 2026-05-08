@@ -26,7 +26,6 @@ img {
 
 .hero::before {
   content: '';
-  filter: grayscale(100%);
   position: absolute;
   top: 0;
   left: 0;
@@ -49,15 +48,18 @@ img {
 
 .hero {
   position: relative;
-  min-height: 90vh;
+  min-height: 100vh;
   z-index: 1;
 
   display: flex;
-  align-items: flex-start; /* dari tengah ke atas */
+  align-items: center;
   justify-content: center;
-  padding-top: 140px; /* atur posisi turun dikit */
 
+  padding: 2rem;
+  text-align: center;
+  overflow: hidden;
 }
+
 .hero h1, .hero h4, .hero p {
   text-shadow: var(--shadow);
 }
@@ -65,14 +67,18 @@ img {
 
 .hero-content {
   position: relative;
-  top: -30px; /* naik ke atas */
+  z-index: 2;
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
 }
 
 
 .hero p {
-   font-weight: 300;
-  font-size: 13px;
+  font-weight: 300;
+  font-size: clamp(0.9rem, 1.5vw, 1.3rem);
 }
+
 .hero a {
   text-decoration: none;
   color: rgb(255, 255, 255);
@@ -93,28 +99,42 @@ img {
   font-weight: 600;
 }
 
+/* NAMA */
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 6rem);
+  line-height: 1.1;
+}
+
+/* TEKS */
+.hero h4 {
+  font-size: clamp(1.2rem, 2vw, 2.5rem);
+}
+
+/* NAMA TAMU */
+.guest-name {
+  font-size: clamp(1.1rem, 2vw, 1.8rem);
+}
 
 
 @media (max-width: 768px) {
+
   .hero {
-    min-height: 100vh;
     padding: 100px 20px 40px;
-    text-align: center;
+    min-height: 100vh;
   }
 
   .hero h1 {
-   font-size: 28px;
+    font-size: 2.5rem;
   }
 
   .hero h4 {
-    font-size: 2rem
+    font-size: 1.3rem;
   }
 
   .hero p {
-  font-size: 13px;
-}
+    font-size: 0.9rem;
+  }
 
- 
 }
 
 
@@ -129,7 +149,7 @@ img {
 
 }
 .simply-countdown .simply-section {
-  background: linear-gradient(145deg, #000000, #565656);
+  background: linear-gradient(145deg, #915900dc, #787878);
   padding: 8px 12px;
   border-radius: 12px;
   min-width: 70px;
@@ -146,7 +166,7 @@ img {
 }
 
 .simply-countdown .simply-section {
-  box-shadow: 0 8px 20px rgba(79, 79, 79, 0.833);
+  box-shadow: 0 8px 20px rgba(77, 77, 77, 0.833);
 
 }
 .simply-countdown .simply-section span {
@@ -571,7 +591,8 @@ width: 100%;
 }
 
 .info .card-body .col-md-6 {
-  flex: 1;
+  flex: 1 1 0;
+  min-width: 120px;
 }
 
 .row.justify-content-center.mt-4 {
@@ -593,20 +614,19 @@ width: 100%;
 
 /* JAM */
 .custom-card span:first-of-type {
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 600;
   display: block;
   margin-bottom: 8px;
-  line-height: 1.2;
-  white-space: nowrap; /* penting biar gak turun baris */
+  line-height: 1.3;
 }
 
 /* TANGGAL */
 .custom-card span:last-of-type {
- font-size: 20px;
+  font-size: 16px;
   font-weight: 500;
-  line-height: 1.2;
-
+  line-height: 1.5;
+  word-break: break-word;
 }
 
 .custom-card span {
@@ -616,10 +636,11 @@ width: 100%;
 }
 
 .custom-card {
-  min-height: 140px;
+  min-height: 150px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
 }
 
 @media (max-width: 768px) {
@@ -668,85 +689,7 @@ body {
 
 
 
-.story {
-  padding: 80px 0;
-  background: #f8f9fa;
-}
 
-/* TIMELINE BASE */
-.timeline {
-  position: relative;
-  margin-top: 50px;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  width: 2px;
-  background: #ddd;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-/* ITEM */
-.timeline-item {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 50px;
-  position: relative;
-}
-
-/* KIRI KANAN */
-.timeline-item.reverse {
-  flex-direction: row-reverse;
-}
-
-/* IMAGE */
-.timeline-img {
-  width: 45%;
-  height: 520px; /* bikin tinggi */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 24px;
-}
-
-/* TEXT */
-.timeline-content {
-  width: 45%;
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-  .timeline::before {
-    left: 10px;
-  }
-
-  .timeline-item {
-    flex-direction: column;
-    padding-left: 30px;
-  }
-
-  .timeline-item.reverse {
-    flex-direction: column;
-  }
-
-  .timeline-img,
-  .timeline-content {
-    width: 100%;
-  }
-
-  .timeline-img {
-  height: 500px;
-  margin-bottom: 18px;
-}
-}
 
 
 .story,
